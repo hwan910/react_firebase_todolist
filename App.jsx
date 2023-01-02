@@ -1,7 +1,3 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
 import {
   collection,
   addDoc,
@@ -23,25 +19,14 @@ import {
 } from "react-native";
 import styled from "@emotion/native";
 import { useEffect, useState } from "react";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCj5PiipCXZ_xKHpjy38Go-JzyR18qDEcw",
-  authDomain: "st-practice-975cb.firebaseapp.com",
-  projectId: "st-practice-975cb",
-  storageBucket: "st-practice-975cb.appspot.com",
-  messagingSenderId: "708217413194",
-  appId: "1:708217413194:web:52628d7b98e22a1e44d0b3",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db } from "./firebase";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
   const [editText, setEditText] = useState("");
   const [category, setCategory] = useState("js");
+
   useEffect(() => {
     getTodos();
   }, [todos]);
